@@ -1,0 +1,2 @@
+module BirdhausHelper
+end
