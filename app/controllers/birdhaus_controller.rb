@@ -9,8 +9,8 @@ class BirdhausController < ApplicationController
         @temp1 = Temperature1s.new(params[temp_params])
         if @temp1.save
             respond_to do |format|
-                format.json {render :json => @temp1.as_json}
-            return
+                format.json {render :json => @temp1.to_json}
+            end
         end
     end
 
