@@ -11,26 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320230236) do
+ActiveRecord::Schema.define(version: 20140322210122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "temperature1s", force: true do |t|
-    t.float    "temp"
-    t.datetime "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "temperature2s", force: true do |t|
-    t.float    "temp"
-    t.datetime "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "temperature3s", force: true do |t|
+  create_table "readings", force: true do |t|
+    t.string   "sensor_id"
     t.float    "temp"
     t.datetime "time"
     t.datetime "created_at"
