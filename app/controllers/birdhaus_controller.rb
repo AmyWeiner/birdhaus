@@ -1,4 +1,5 @@
 class BirdhausController < ApplicationController
+    skip_before_filter :verify_authenticity_token
     
     def index
         @temp1 = Temperature1.all
@@ -18,7 +19,6 @@ class BirdhausController < ApplicationController
                 format.json {render json: @temp1}
             end
         end
-        redirect_to root_url
     end
 
     def temp_params
