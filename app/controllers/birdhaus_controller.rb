@@ -5,7 +5,7 @@ class BirdhausController < ApplicationController
         @temp = Reading.all
         respond_to do |format|
             format.html
-            format.json {render json: @temp}
+            format.json {render json: @temp[0]}
         end
     end
 
@@ -15,7 +15,7 @@ class BirdhausController < ApplicationController
         if @temp.save
             respond_to do |format|
                 format.html
-                format.json {render json: @temp}
+                format.json {render json: @temp[0]}
             end
         end
     end
