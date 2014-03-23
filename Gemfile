@@ -5,6 +5,8 @@ gem 'rails', '4.0.4'
 
 gem 'angularjs-rails', '~> 1.2.14'
 
+gem 'ngmin-rails'
+
 gem 'active_model_serializers'
 
 # Use PostgreSQL as the database for Active Record
@@ -30,7 +32,7 @@ gem 'less-rails'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
