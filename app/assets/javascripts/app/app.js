@@ -1,12 +1,26 @@
-var birdhaus = angular.module('birdhaus', ['ngRoute', 'birdhaus.controllers', 'birdhaus.services']);
+var birdhausApp = angular.module('birdhausApp', [
+    'birdhausRouter',
+    'birdhausControllers',
+    'ngResource'
+    // 'birdhausServices'
+    ]);
 
-birdhaus.config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
-        when('/', {
-            templateUrl: '/templates/dashboard.html',
-            controller: 'HomeController'
-        }).
-        otherwise({redirectTo: '/'
-        });
+var birdhausControllers = angular.module('birdhausControllers', []);
+
+var birdhausRouter = angular.module('birdhausRouter', [
+    'ngRoute'
+    ]);
+
+birdhausRouter.config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+    .when('/', {
+        templateUrl: '/templates/dashboard.html',
+        controller: 'HomeCtrl'
+    })
+    .when('/birdhaus', {
+        templateUrl: '/templates/dashboard.html',
+        controller: 'HomeCtrl'
+    })
+    .otherwise({redirectTo: '/'
+    });
 }]);
