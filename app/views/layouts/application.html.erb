@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app='birdhaus'>
 <head>
   <title>Birdhaus</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%= yield %>
+<div data-ng-view data-ng-controller='HomeController'></div>
 
 </body>
 </html>

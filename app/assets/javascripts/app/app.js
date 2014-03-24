@@ -1,8 +1,12 @@
-angular.module('birdhaus', ['ngRoute', 'birdhaus.controllers', 'birdhaus.services']);
-    .config(function($routeProvider) {
-        $routeProvider.when('/', {
+var birdhaus = angular.module('birdhaus', ['ngRoute', 'birdhaus.controllers', 'birdhaus.services']);
+
+birdhaus.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+        when('/', {
             templateUrl: '/templates/dashboard.html',
             controller: 'HomeController'
-    })
-      .otherwise({redirectTo: '/'});
-});
+        }).
+        otherwise({redirectTo: '/'
+        });
+}]);
