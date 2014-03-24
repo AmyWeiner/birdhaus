@@ -4,7 +4,7 @@ class BirdhausController < ApplicationController
 
     def index
         @temp = Reading.all
-        render json: @temp[0..249]
+        render json: @temp.last
     end
 
     def create
