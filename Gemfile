@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
+gem 'highcharts-rails'
+
 gem 'angularjs-rails', '~> 1.2.14'
 
 gem 'd3-rails'

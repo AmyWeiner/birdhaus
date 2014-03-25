@@ -121,6 +121,8 @@ GEM
       rspec (>= 2.14, < 4.0)
     haml (4.0.5)
       tilt
+    highcharts-rails (3.0.10)
+      railties (>= 3.1)
     highline (1.6.21)
     hike (1.2.3)
     hirb (0.7.1)
@@ -309,6 +311,7 @@ DEPENDENCIES
   d3-rails
   factory_girl
   guard-rspec
+  highcharts-rails
   jazz_hands
   jbuilder (~> 1.2)
   jquery-rails

@@ -25,6 +25,10 @@ birdhausRouter.config(['$routeProvider', function($routeProvider) {
         templateUrl: '/templates/about.html',
         controller: 'HomeCtrl'
     })
+    .when('/chart', {
+        templateUrl: '/templates/high_chart.html',
+        controller: 'HomeCtrl'
+    })
     .otherwise({redirectTo: '/'
     });
 }]);
