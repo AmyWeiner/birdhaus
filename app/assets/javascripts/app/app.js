@@ -21,6 +21,10 @@ birdhausRouter.config(['$routeProvider', function($routeProvider) {
         templateUrl: '/templates/dashboard.html',
         controller: 'HomeCtrl'
     })
+    .when('/about', {
+        templateUrl: '/templates/about.html',
+        controller: 'HomeCtrl'
+    })
     .otherwise({redirectTo: '/'
     });
 }]);

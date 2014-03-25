@@ -3,7 +3,8 @@
 <div>
     <ul>
         <li ng-repeat='reading in readings track by $index'>
-            {{reading.temp}}
+            ID: {{reading.id}}<br>
+            Temperature: {{reading.temp}} (F)
         </li>
     </ul>
 </div>
