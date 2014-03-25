@@ -7,9 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div data-ng-view>
+<header class="titlebar"><h1>Birdhaus</h1></header>
+<div class="wrapper">
+    <div class="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li><a href="/">Current Temperature</a></li>
+            <li><a href="/last_hour">Last Hour</a></li>
+            <li><a href="/last_day">Last Day</a></li>
+            <li><a href="/last_week">Last Week</a></li>
+            <li><a href="/about">About Birdhaus</a></li>
+        </ul>
+    </div>
 </div>
+
+<div class="content">
+    <div data-ng-view>
+    </div>
+</div>
+
+<!-- <script>
+var initNavHeight = function(){
+var windowHeight = $(window).height();
+    $(".sidebar-wrapper").css('height', windowHeight + 'pixel');
+}
+
+initNavHeight();
+</script> -->
 
 </body>
 </html>
