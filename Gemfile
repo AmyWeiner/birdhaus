@@ -5,6 +5,8 @@ gem 'rails', '4.0.4'
 
 gem 'angularjs-rails', '~> 1.2.14'
 
+gem 'd3-rails'
+
 gem 'ngmin-rails'
 
 gem 'active_model_serializers'
