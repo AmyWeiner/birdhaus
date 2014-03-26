@@ -15,5 +15,9 @@
 //= require angular
 //= require angular-route
 //= require angular-resource
-//= require d3
+//= require underscore
+//= require highstocks
+//= require highstocks/themes/dark-blue
+// require highcharts
+// require highcharts/highcharts-more
 //= require_tree .

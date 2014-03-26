@@ -2,7 +2,6 @@ var birdhausApp = angular.module('birdhausApp', [
     'birdhausRouter',
     'birdhausControllers',
     'ngResource'
-    // 'birdhausServices'
     ]);
 
 var birdhausControllers = angular.module('birdhausControllers', []);
