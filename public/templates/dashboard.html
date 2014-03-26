@@ -1,10 +1,94 @@
 <h2>Dashboard</h2>
 
-<div>
+<!-- <div>
     <ul>
         <li ng-repeat='reading in readings track by $index'>
             ID: {{reading.id}}<br>
             Temperature: {{reading.temp}} (F)
         </li>
     </ul>
-</div>
+</div> -->
+
+<div id="container" style="height: 700px; min-width: 310px"></div>
+
+<script>
+$(function() {
+
+    $.getJSON('./birdhaus.json', function(data) {
+        console.log(data.birdhaus) //Loop over objects in data.birdhaus array
+
+        // Create a timer
+        var start = + new Date();
+
+        // Create the chart
+        $('#container').highcharts('StockChart', {
+            chart: {
+                events: {
+                    load: function(chart) {
+                        this.setTitle(null, {
+                            text: 'Built chart in '+ (new Date() - start) +'ms'
+                        });
+                    }
+                },
+                zoomType: 'x'
+            },
+
+            rangeSelector: {
+                inputEnabled: $('#container').width() > 480,
+                buttons: [{
+                    type: 'minute',
+                    count: 60,
+                    text: '1h'
+                }, {
+                    type: 'minute',
+                    count: 360,
+                    text: '6h'
+                }, {
+                    type: 'day',
+                    count: 1,
+                    text: '1d'
+                }, {
+                    type: 'week',
+                    count: 1,
+                    text: '1w'
+                }, {
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'ytd',
+                    count: 1,
+                    text: 'YtD'
+                }],
+                selected: 3
+            },
+
+            yAxis: {
+                title: {
+                    text: 'Temperature (°C)'
+                }
+            },
+
+            title: {
+                text: 'Temperature Readings from the Hattery, Main Space'
+            },
+
+            subtitle: {
+                text: 'Built chart in ...' // dummy text to reserve space for dynamic subtitle
+            },
+
+            series: [{
+                name: 'Temperature',
+                data: data.birdhaus,
+                pointStart: Date.UTC(2014, 3, 22),
+                pointInterval: 3600 * 1000,
+                tooltip: {
+                    valueDecimals: 2,
+                    valueSuffix: '°C'
+                }
+            }]
+
+        });
+    });
+});
+</script>
