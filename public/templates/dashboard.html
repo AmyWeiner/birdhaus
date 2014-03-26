@@ -1,7 +1,7 @@
 <h2>Dashboard</h2>
 
 <div id="container" style="height: 700px; min-width: 310px"></div>
-
+<script src="https://rawgithub.com/laff/technical-indicators/master/technical-indicators.src.js"></script>
 <script>
 $(function() {
 
@@ -77,7 +77,7 @@ $(function() {
 
             yAxis: {
                 title: {
-                    text: 'Temperature (°C)'
+                    text: 'Temperature (°F)'
                 }
             },
 
@@ -88,18 +88,34 @@ $(function() {
             subtitle: {
                 text: 'Built chart in ...' // dummy text to reserve space for dynamic subtitle
             },
+            legend: {
+                enabled: true,
+                backgroundColor: '#FFAA00',
+                borderColor: '#1240AB',
+                borderRadius: 10,
+                borderWidth: 3,
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
 
             series: [{
                 name: 'Temperature',
+                id: 'primary',
                 data: tempResults,
                 pointStart: Date.UTC(2014, 3, 22),
                 // pointInterval: 3600 * 1000, // Shows arbitrary hourly points on the chart
                 tooltip: {
+                    crosshairs: [true, true],
+                    shared: true,
                     valueDecimals: 2,
-                    valueSuffix: '°C'
+                    valueSuffix: '°F'
                 }
+            }, {
+                name: '15-day SMA',
+                linkedTo: 'primary',
+                 showInLegend: true
             }]
-
         });
     });
 });
