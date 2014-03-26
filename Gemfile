@@ -5,6 +5,8 @@ gem 'rails', '4.0.4'
 
 gem 'angularjs-rails', '~> 1.2.14'
 
+gem 'underscore-rails', '~> 1.6.0'
+
 # gem 'highcharts-rails', '~> 3.0.10'
 
 gem 'highstocks-rails', '~> 1.3.10'

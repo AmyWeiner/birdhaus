@@ -15,7 +15,16 @@
 $(function() {
 
     $.getJSON('./birdhaus.json', function(data) {
-        console.log(data.birdhaus) //Loop over objects in data.birdhaus array
+
+        
+        var tempResults = _.map(data.birdhaus, function(readings) {
+            return readings.temp
+            // var tempObject= {};
+            // push readings.temp into tempObject
+            // push readings.time into tempObject  
+            // return tempObject;
+        });
+        console.log(tempResults)
 
         // Create a timer
         var start = + new Date();
@@ -63,6 +72,17 @@ $(function() {
                 selected: 3
             },
 
+             xAxis:  {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    hour: '%Y-%m-%d<br/>%H:%M',
+                    day: '%Y<br/>%m-%d',
+                    week: '%Y<br/>%m-%d',
+                    month: '%Y-%m',
+                    year: '%Y'
+                }
+            },
+
             yAxis: {
                 title: {
                     text: 'Temperature (°C)'
@@ -79,9 +99,9 @@ $(function() {
 
             series: [{
                 name: 'Temperature',
-                data: data.birdhaus,
+                data: tempResults,
                 pointStart: Date.UTC(2014, 3, 22),
-                pointInterval: 3600 * 1000,
+                // pointInterval: 3600 * 1000, // Shows arbitrary hourly points on the chart
                 tooltip: {
                     valueDecimals: 2,
                     valueSuffix: '°C'
