@@ -19,4 +19,6 @@
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/themes/dark-blue
+//= require highstock
+//= require highstock/modules/highstock-more
 //= require_tree .
