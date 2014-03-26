@@ -44,3 +44,9 @@ body{
     display: block;
     font-size: 1em;
 }
+
+#birdhouse {
+  position: relative;
+  top: -20px;
+  float: right;
+}
