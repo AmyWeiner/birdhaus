@@ -25,8 +25,21 @@ birdhausRouter.config(['$routeProvider', function($routeProvider) {
         templateUrl: '/templates/about.html',
         controller: 'HomeCtrl'
     })
+<<<<<<< HEAD
     .when('/chart', {
         templateUrl: '/templates/high_chart.html',
+=======
+    .when('/last_hour', {
+        templateUrl: '/templates/last_hour.html',
+        controller: 'HomeCtrl'            
+    })
+    .when('/last_day', {
+        templateUrl: 'templates/last_day.html',
+        controller: 'HomeCtrl'
+    })
+    .when('/last_week', {
+        templateUrl: 'templates/last_week',
+>>>>>>> 5e5c5563bfd0fd1f979069e20af8a0da18941713
         controller: 'HomeCtrl'
     })
     .otherwise({redirectTo: '/'
