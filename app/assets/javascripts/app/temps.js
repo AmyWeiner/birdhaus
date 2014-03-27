@@ -1,12 +1,16 @@
 $(function() {
 
     $.getJSON('./birdhaus.json', function(data) {
+        
+        var  sensorData = {
+            '28-000005be3def': [],
+            '28-000005bd301d': [],
+            '28-000005bdf57e': []
+        };
 
-        var tempResults = data.birdhaus.map(function(obj) {
-            console.log(obj.time);
-            return [new Date(obj.time).getTime()/1000, obj.temp];
+        data.birdhaus.forEach(function(obj) {
+            sensorData[obj.sensor_id].push([Date.parse(obj.time), obj.temp]);
         });
-        console.log(tempResults);
 
         // Create a timer
         var start = + new Date();
@@ -51,7 +55,7 @@ $(function() {
                     count: 1,
                     text: 'YtD'
                 }],
-                selected: 3
+                selected: 1
             },
 
              xAxis:  {
@@ -67,7 +71,7 @@ $(function() {
 
             yAxis: {
                 title: {
-                    text: 'Temperature (°C)'
+                    text: 'Temperature (°F)'
                 }
             },
 
@@ -80,15 +84,31 @@ $(function() {
             },
 
             series: [{
-                name: 'Temperature',
-                data: tempResults,
+                name: 'Sensor 3def',
+                data: sensorData['28-000005be3def'],
                 type: 'spline',
                 pointStart: Date.UTC(2014, 3, 22),
-                //pointInterval sets consistent time points on x-axis in ms
-                // pointInterval: 240 * 1000,
                 tooltip: {
                     valueDecimals: 2,
-                    valueSuffix: '°C'
+                    valueSuffix: '°F'
+                }, 
+            }, {
+                name: 'Sensor 301d',
+                data: sensorData['28-000005bd301d'],
+                type: 'spline',
+                pointStart: Date.UTC(2014, 3, 22),
+                tooltip: {
+                    valueDecimals: 2,
+                    valueSuffix: '°F'
+                }
+            }, {
+                name: 'Sensor 301d',
+                data: sensorData['28-000005bdf57e'],
+                type: 'spline',
+                pointStart: Date.UTC(2014, 3, 22),
+                tooltip: {
+                    valueDecimals: 2,
+                    valueSuffix: '°F'
                 }
             }]
 
