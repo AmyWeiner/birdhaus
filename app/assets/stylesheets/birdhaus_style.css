@@ -11,7 +11,7 @@ body{
 .titlebar {
     width: 100%;
     padding: 5px;
-    background-color: lightgreen;
+    background-color: #1240AB;
     font-family: 'Monofett', cursive;
     font-size: 2em;
 }
@@ -20,14 +20,14 @@ body{
   width: 80%;
   height: 1000px;
   float: left;
-  background: grey;
+  background: #FFAA00;
 }
 
 .sidebar-wrapper{
   width: 20%;
   height: 1000px;
   float: left;
-  background: tan;
+  background: #FF3500;
 }
 
 .sidebar-wrapper ul{
