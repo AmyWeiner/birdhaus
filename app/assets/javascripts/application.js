@@ -11,12 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require underscore
 //= require jquery_ujs
 //= require angular
 //= require angular-route
 //= require angular-resource
 //= require highstocks
-// require highcharts
-// require highcharts/highcharts-more
 //= require_tree .
