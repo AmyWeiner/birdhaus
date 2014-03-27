@@ -93,7 +93,6 @@ $(function() {
                 align: 'right',
                 verticalAlign: 'middle'
             },
-
             series: [{
                 name: 'Sensor 3def',
                 data: sensorData['28-000005be3def'],
@@ -104,7 +103,7 @@ $(function() {
                     shared: true,
                     valueDecimals: 2,
                     valueSuffix: '°F'
-                }, 
+                },
             }, {
                 name: 'Sensor 301d',
                 data: sensorData['28-000005bd301d'],
@@ -120,6 +119,8 @@ $(function() {
                 type: 'spline',
                 pointStart: Date.UTC(2014, 3, 22),
                 tooltip: {
+                    crosshairs: [true, true],
+                    shared: true,
                     valueDecimals: 2,
                     valueSuffix: '°F'
                 }
@@ -127,11 +128,10 @@ $(function() {
                 name: '15-day SMA',
                 linkedTo: 'primary',
                  showInLegend: true,
-                 type: 'trendline',
+                type: 'trendline',
                 algorithm: 'SMA',
-                periods: 15
+                periods: 1
             }]
-
         });
     });
 });

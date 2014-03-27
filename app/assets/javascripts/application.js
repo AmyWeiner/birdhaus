@@ -16,4 +16,5 @@
 //= require angular-route
 //= require angular-resource
 //= require highstocks
+//= technicalIndicators
 //= require_tree .
