@@ -14,6 +14,7 @@ $(function() {
         // Create the chart
         $('#container').highcharts('StockChart', {
             chart: {
+                backgroundColor: '#00B64F',
                 events: {
                     load: function(chart) {
                         this.setTitle(null, {
@@ -78,18 +79,36 @@ $(function() {
             subtitle: {
                 text: 'Built chart in ...' // dummy text to reserve space for dynamic subtitle
             },
+            legend: {
+                enabled: true,
+                backgroundColor: '#FFAA00',
+                borderColor: '#1240AB',
+                borderRadius: 10,
+                borderWidth: 3,
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
 
-            series: [{
+           series: [{
                 name: 'Temperature',
+                id: 'primary',
                 data: tempResults,
-                type: 'spline',
                 pointStart: Date.UTC(2014, 3, 22),
-                //pointInterval sets consistent time points on x-axis in ms
-                // pointInterval: 240 * 1000,
+                // pointInterval: 3600 * 1000, // Shows arbitrary hourly points on the chart
                 tooltip: {
+                    crosshairs: [true, true],
+                    shared: true,
                     valueDecimals: 2,
-                    valueSuffix: '°C'
+                    valueSuffix: '°F'
                 }
+            }, {
+                name: '15-day SMA',
+                linkedTo: 'primary',
+                 showInLegend: true,
+                 type: 'trendline',
+                algorithm: 'SMA',
+                periods: 15
             }]
 
         });
