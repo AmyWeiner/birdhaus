@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Monofett' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -16,35 +17,18 @@
             <li class="about"><a href="#/about">About Birdhaus</a></li>
         </ul>
     </div>
-    <!-- <div class="titlebar"><h1>Birdhaus</h1>
-        <a class="about" href="#/about">About Birdhaus</a>
-    </div> -->
 
-<!-- <header class="titlebar"><h1>Birdhaus</h1>
-    <a class="about" href="#/about">About Birdhaus</a>
-</header> -->
-
-<div class="wrapper">
-    <div class="triangle"></div>
-    <div class="sidebar-wrapper">
-        <ul class="sidebar-nav">
-        </ul>
+    <div class="wrapper">
+        <div class="sidebar-wrapper">
+            <ul class="sidebar-nav">
+            </ul>
+        </div>
     </div>
-</div>
 
-<div class="content">
-    <div data-ng-view>
+    <div class="content">
+        <div data-ng-view>
+        </div>
     </div>
-</div>
-
-<!-- <script>
-var initNavHeight = function(){
-var windowHeight = $(window).height();
-    $(".sidebar-wrapper").css('height', windowHeight + 'pixel');
-}
-
-initNavHeight();
-</script> -->
 
 </body>
 </html>
