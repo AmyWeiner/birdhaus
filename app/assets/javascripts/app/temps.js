@@ -1,3 +1,20 @@
+function requestData() {
+    $.ajax({
+        url: 'http://birdhaus.herokuapp.com/birdhaus.json', 
+        success: function(point) {
+            var series = chart.series[0],
+                shift = series.data.length > 2; // shift if the series is longer than 20
+
+            // add the point
+            chart.series[0].addPoint(eval(point), true, shift);
+
+            // call it again after one second
+            setTimeout(requestData, 5000); 
+        },
+        cache: false
+    });
+}
+
 $(function() {
 
     $.getJSON('./birdhaus.json', function(data) {
@@ -12,6 +29,14 @@ $(function() {
             sensorData[obj.sensor_id].push([Date.parse(obj.time), obj.temp]);
         });
 
+        var averages = [];
+        for ( var i = 0; i < sensorData['28-000005be3def'].length; i++){
+            avg = [];
+            avg[0] = (sensorData['28-000005be3def'][i][0] + sensorData['28-000005bd301d'][i][0] + sensorData['28-000005bdf57e'][i][0]) / 3;
+            avg[1] = (sensorData['28-000005be3def'][i][1] + sensorData['28-000005bd301d'][i][1] + sensorData['28-000005bdf57e'][i][1]) / 3;
+            averages.push(avg);
+        }
+
         // Create a timer
         var start = + new Date();
 
@@ -20,11 +45,12 @@ $(function() {
             chart: {
                 backgroundColor: '#00B64F',
                 events: {
-                    load: function(chart) {
-                        this.setTitle(null, {
-                            text: 'Built chart in '+ (new Date() - start) +'ms'
-                        });
-                    }
+                    load: requestData,
+                    // load: function(chart) {
+                    //     this.setTitle(null, {
+                    //         text: 'Built chart in '+ (new Date() - start) +'ms'
+                    //     });
+                    // }
                 },
                 zoomType: 'x'
             },
@@ -97,6 +123,7 @@ $(function() {
                 name: 'Sensor 3def',
                 data: sensorData['28-000005be3def'],
                 type: 'spline',
+                id: 'primary',
                 pointStart: Date.UTC(2014, 3, 22),
                 tooltip: {
                     crosshairs: [true, true],
@@ -125,12 +152,16 @@ $(function() {
                     valueSuffix: '°F'
                 }
             }, {
-                name: '15-day SMA',
-                linkedTo: 'primary',
-                 showInLegend: true,
-                type: 'trendline',
-                algorithm: 'SMA',
-                periods: 1
+                name: 'Average',
+                data: averages,
+                type: 'spline',
+                pointStart: Date.UTC(2014, 3, 22),
+                tooltip: {
+                    crosshairs: [true, true],
+                    shared: true,
+                    valueDecimals: 2,
+                    valueSuffix: '°F'
+                }
             }]
         });
     });
