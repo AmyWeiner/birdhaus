@@ -8,13 +8,25 @@ body{
   margin: 0 auto;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .titlebar {
     width: 100%;
-    padding: 5px;
+    padding: 1px;
     background-color: #1240AB;
     font-family: 'Monofett', cursive;
     font-size: 2em;
     color: grey;
+}
+
+.title_list {
+  list-style-type: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
 }
 
 .about {
@@ -22,6 +34,7 @@ body{
   top: -100px;
   right: 15px;
   float: right;
+  font-family: Nova Mono;
 }
 
 .content {
@@ -32,7 +45,12 @@ body{
 }
 
 .triangle {
-
+  width: 0; 
+  height: 0; 
+  border-left: 136px solid transparent;
+  border-right: 137px solid transparent;
+  border-bottom: 200px solid black;
+  position: absolute;
 }
 
 .sidebar-wrapper{
@@ -61,4 +79,13 @@ body{
 .sidebar-wrapper a{
     display: block;
     font-size: 1em;
+}
+
+.app_desc {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.members {
+  text-align: center;
 }
