@@ -3,7 +3,7 @@ class BirdhausController < ApplicationController
     respond_to :json
 
     def index
-        @temp = Reading.limit(5000)
+        @temp = Reading.all
         respond_with(@temp) do |format|
             format.html
             format.json {render :json => @temp.as_json}

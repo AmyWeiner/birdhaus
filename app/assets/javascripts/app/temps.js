@@ -1,25 +1,9 @@
-function requestData() {
-    $.ajax({
-        url: 'http://birdhaus.herokuapp.com/birdhaus.json', 
-        success: function(point) {
-            var series = chart.series[0],
-                shift = series.data.length > 2; // shift if the series is longer than 20
-
-            // add the point
-            chart.series[0].addPoint(eval(point), true, shift);
-
-            // call it again after one second
-            setTimeout(requestData, 5000); 
-        },
-        cache: false
-    });
-}
 
 $(function() {
 
     $.getJSON('./birdhaus.json', function(data) {
         
-        var  sensorData = {
+        sensorData = {
             '28-000005be3def': [],
             '28-000005bd301d': [],
             '28-000005bdf57e': []
@@ -32,9 +16,14 @@ $(function() {
         var averages = [];
         for ( var i = 0; i < sensorData['28-000005be3def'].length; i++){
             avg = [];
+            try{
             avg[0] = (sensorData['28-000005be3def'][i][0] + sensorData['28-000005bd301d'][i][0] + sensorData['28-000005bdf57e'][i][0]) / 3;
             avg[1] = (sensorData['28-000005be3def'][i][1] + sensorData['28-000005bd301d'][i][1] + sensorData['28-000005bdf57e'][i][1]) / 3;
             averages.push(avg);
+            } catch(e){
+                console.log(sensorData['28-000005be3def'][i],sensorData['28-000005bd301d'][i],sensorData['28-000005bdf57e'][i]);
+                console.log(e);
+            }
         }
 
         // Create a timer
@@ -43,16 +32,21 @@ $(function() {
         // Create the chart
         $('#container').highcharts('StockChart', {
             chart: {
-                backgroundColor: '#00B64F',
+                backgroundColor: '#3e94d1',
                 events: {
-                    load: requestData,
-                    // load: function(chart) {
-                    //     this.setTitle(null, {
-                    //         text: 'Built chart in '+ (new Date() - start) +'ms'
-                    //     });
-                    // }
+                    load: function(chart) {
+                        this.setTitle(null, {
+                            text: 'Built chart in '+ (new Date() - start) +'ms'
+                        });
+                    }
                 },
                 zoomType: 'x'
+            },
+            tooltip: {
+                crosshairs: [true, true],
+                shared: true,
+                valueDecimals: 2,
+                valueSuffix: '°F'
             },
 
             rangeSelector: {
@@ -123,45 +117,28 @@ $(function() {
                 name: 'Sensor 3def',
                 data: sensorData['28-000005be3def'],
                 type: 'spline',
+                lineColor: '#b90091',
+                turboThreshold: 0,
                 id: 'primary',
                 pointStart: Date.UTC(2014, 3, 22),
-                tooltip: {
-                    crosshairs: [true, true],
-                    shared: true,
-                    valueDecimals: 2,
-                    valueSuffix: '°F'
-                },
             }, {
                 name: 'Sensor 301d',
                 data: sensorData['28-000005bd301d'],
                 type: 'spline',
+                turboThreshold: 0,
                 pointStart: Date.UTC(2014, 3, 22),
-                tooltip: {
-                    valueDecimals: 2,
-                    valueSuffix: '°F'
-                }
             }, {
                 name: 'Sensor 301d',
                 data: sensorData['28-000005bdf57e'],
                 type: 'spline',
+                turboThreshold: 0,
                 pointStart: Date.UTC(2014, 3, 22),
-                tooltip: {
-                    crosshairs: [true, true],
-                    shared: true,
-                    valueDecimals: 2,
-                    valueSuffix: '°F'
-                }
             }, {
                 name: 'Average',
                 data: averages,
                 type: 'spline',
+                turboThreshold: 0,
                 pointStart: Date.UTC(2014, 3, 22),
-                tooltip: {
-                    crosshairs: [true, true],
-                    shared: true,
-                    valueDecimals: 2,
-                    valueSuffix: '°F'
-                }
             }]
         });
     });

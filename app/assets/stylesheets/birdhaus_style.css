@@ -14,6 +14,14 @@ body{
     background-color: #1240AB;
     font-family: 'Monofett', cursive;
     font-size: 2em;
+    color: grey;
+}
+
+.about {
+  position: relative;
+  top: -100px;
+  right: 15px;
+  float: right;
 }
 
 .content {
@@ -21,6 +29,10 @@ body{
   height: 1000px;
   float: left;
   background: #FFAA00;
+}
+
+.triangle {
+
 }
 
 .sidebar-wrapper{
